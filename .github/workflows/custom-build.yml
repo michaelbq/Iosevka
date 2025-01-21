@@ -1,6 +1,10 @@
 name: My Custom Build Validation
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # 允许手动触发该工作流
 
 jobs:
   build:
@@ -35,3 +39,15 @@ jobs:
         run: |
           npm install
           npm run build -- ttf::${{ matrix.fontName }}
+          
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v2
+        with:
+          # tag_name: ${{ env.VERSION }}
+          # name: v${{ env.VERSION }}
+          draft: false
+          prerelease: false
+          files: |
+            dist/IosevkaCustomSs05/TTF/IosevkaCustomSs05-Regular.ttf
+            dist/IosevkaCustomSs05/TTF/IosevkaCustomSs05-Italic.ttf
