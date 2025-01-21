@@ -10,7 +10,7 @@ jobs:
 
     strategy:
       matrix:
-        fontName: ["IosevkaSS05"]
+        fontName: ["IosevkaCustomSs05"]
 
     steps:
       # Checkout repository into `iosevka` sub directory
