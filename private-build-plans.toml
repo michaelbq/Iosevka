@@ -31,12 +31,10 @@ buildTextureFeature = true
     a = "double-storey-serifless"
     # f = "flat-hook-serifless"
     i = "serifed"
-    i = "serifed-flat-tailed"
+    # i = "serifed-flat-tailed"
     j = "flat-hook-serifed"
     # l = "serifed-flat-tailed"
     l = "zshaped"
-    # r = "hookless-serifless"
-    # r = "hookless-top-serifed"
     # FiraCode的r是有个钩子的
     r = "corner-hooked-top-serifed"
     t = "flat-hook-short-neck2"
