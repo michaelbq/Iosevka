@@ -1,4 +1,4 @@
-name: My Custom Build Validation
+name: Albert Iosevka Custom Build
 
 on:
   push:
@@ -46,16 +46,14 @@ jobs:
           # echo "TAG_NAME=${TAG_NAME#refs/tags/}" >> $GITHUB_ENV
           echo "NOW=v$(date +'%Y%m%d.%H%M%S')" >> $GITHUB_ENV
           
-      - name: Create Release
-        id: create_release
+      - name: Publish Release
+        id: publish_release
         uses: softprops/action-gh-release@v2
         with:
-          # path: iosevka
-          # tag_name: ${{ TAG_NAME }}
           tag_name: ${{ env.NOW }}
-          # name: v${{ env.VERSION }}
           draft: false
           prerelease: false
           files: |
             iosevka/dist/IosevkaCustomSs05/TTF/IosevkaCustomSs05-Regular.ttf
             iosevka/dist/IosevkaCustomSs05/TTF/IosevkaCustomSs05-Italic.ttf
+            iosevka/dist/IosevkaCustomSs05/TTF/IosevkaTermSs05-Oblique.ttf

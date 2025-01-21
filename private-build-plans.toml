@@ -1,30 +1,65 @@
-[buildPlans.IosevkaCustomSs05]
-family = "IosevkaCustomSS05"
+[buildPlans.IosevkaTermSs05]
+family = "IosevkaTermSS05"
 spacing = "term"
 serifs = "sans"
 noCvSs = true
-exportGlyphNames = false
+exportGlyphNames = true
+buildTextureFeature = true
 
-  [buildPlans.IosevkaCustomSs05.variants]
+  [buildPlans.IosevkaTermSs05.variants]
   inherits = "ss05"
 
-    [buildPlans.IosevkaCustomSs05.variants.design]
+    [buildPlans.IosevkaTermSs05.metricOverride]
+    # 1150 显示52行
+    # leading = 1150
+    # 1130显示55行
+    leading = 1130
+    cap = 665
+    ascender = 665
+    xHeight = 480
+    accentHeight = 136
+    parenSize = 840
+    # sb默认为60，调整到58后，字符显得挤了点
+    # sb = 59
+
+    [buildPlans.IosevkaTermSs05.variants.design]
+    one = "no-base"
+    four = "closed-serifless"
+    six = "straight-bar"
+    nine = "open-contour"
+    zero = "oval-tall-slashed"
     a = "double-storey-serifless"
+    # f = "flat-hook-serifless"
+    i = "serifed"
+    i = "serifed-flat-tailed"
+    j = "flat-hook-serifed"
+    # l = "serifed-flat-tailed"
     l = "zshaped"
+    # r = "hookless-serifless"
+    # r = "hookless-top-serifed"
+    # FiraCode的r是有个钩子的
     r = "corner-hooked-top-serifed"
-    t = "flat-hook"
+    t = "flat-hook-short-neck2"
     ampersand = "closed"
     at = "fourfold"
 
-  [buildPlans.IosevkaCustomSs05.ligations]
+  [buildPlans.IosevkaTermSs05.ligations]
   inherits = "dlig"
 
-[buildPlans.IosevkaCustomSs05.weights.Regular]
-shape = 400
-menu = 400
-css = 400
+[buildPlans.IosevkaTermSs05.weights.Regular]
+# 改为Retina的450看看。400 -> 450
+shape = 450
+menu = 450
+css = 450
 
-[buildPlans.IosevkaCustomSs05.widths.Normal]
-shape = 500
+# 好像改不了名，那就把Regular的改为450得了
+# [buildPlans.IosevkaTermSs05.weights.Retina]
+# shape = 450
+# menu = 450
+# css = 450
+
+[buildPlans.IosevkaTermSs05.widths.Normal]
+# 默认宽度shape = 500
+shape = 520
 menu = 5
 css = "normal"
