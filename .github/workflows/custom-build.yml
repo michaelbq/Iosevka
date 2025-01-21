@@ -44,7 +44,7 @@ jobs:
         id: create_release
         uses: softprops/action-gh-release@v2
         with:
-          # tag_name: ${{ env.VERSION }}
+          tag_name: Nightly_Build
           # name: v${{ env.VERSION }}
           draft: false
           prerelease: false
