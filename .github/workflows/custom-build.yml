@@ -14,7 +14,7 @@ jobs:
 
     strategy:
       matrix:
-        fontName: ["IosevkaCustomSs05"]
+        fontName: ["IosevkaTermSs05"]
 
     steps:
       # Checkout repository into `iosevka` sub directory
@@ -54,6 +54,6 @@ jobs:
           draft: false
           prerelease: false
           files: |
-            iosevka/dist/IosevkaCustomSs05/TTF/IosevkaCustomSs05-Regular.ttf
-            iosevka/dist/IosevkaCustomSs05/TTF/IosevkaCustomSs05-Italic.ttf
-            iosevka/dist/IosevkaCustomSs05/TTF/IosevkaTermSs05-Oblique.ttf
+            iosevka/dist/IosevkaTermSs05/TTF/IosevkaTermSs05-Regular.ttf
+            iosevka/dist/IosevkaTermSs05/TTF/IosevkaTermSs05-Italic.ttf
+            iosevka/dist/IosevkaTermSs05/TTF/IosevkaTermSs05-Oblique.ttf
