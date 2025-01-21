@@ -39,16 +39,21 @@ jobs:
         run: |
           npm install
           npm run build -- ttf::${{ matrix.fontName }}
+
+      - name: Set tag name env
+        run: |
+          TAG_NAME=${{ github.ref }}
+          echo "TAG_NAME=${TAG_NAME#refs/tags/}" >> $GITHUB_ENV
           
       - name: Create Release
         id: create_release
         uses: softprops/action-gh-release@v2
         with:
-          path: iosevka
-          tag_name: ${{ steps.get_commit_id.outputs.short_commit_id }}
+          # path: iosevka
+          tag_name: $TAG_NAME
           # name: v${{ env.VERSION }}
           draft: false
           prerelease: false
           files: |
-            dist/IosevkaCustomSs05/TTF/IosevkaCustomSs05-Regular.ttf
-            dist/IosevkaCustomSs05/TTF/IosevkaCustomSs05-Italic.ttf
+            iosevka/dist/IosevkaCustomSs05/TTF/IosevkaCustomSs05-Regular.ttf
+            iosevka/dist/IosevkaCustomSs05/TTF/IosevkaCustomSs05-Italic.ttf
