@@ -49,7 +49,9 @@ jobs:
           npm run build -- ttf::${{ matrix.fontName }}
 
       - name: Patch Iosevka
-        run: ./font-patcher --quiet --adjust-line-height --complete --careful -s iosevka/dist/IosevkaTermSs05/TTF/IosevkaTermSs05-Regular.ttf
+        run: |
+          ./font-patcher --quiet --adjust-line-height --complete --careful -s iosevka/dist/IosevkaTermSs05/TTF/IosevkaTermSs05-Regular.ttf
+          ./font-patcher --quiet --adjust-line-height --complete --careful -s iosevka/dist/IosevkaTermSs05/TTF/IosevkaTermSs05-Italic.ttf
 
       - name: Set tag name env
         run: |
@@ -68,4 +70,5 @@ jobs:
             iosevka/dist/IosevkaTermSs05/TTF/IosevkaTermSs05-Regular.ttf
             iosevka/dist/IosevkaTermSs05/TTF/IosevkaTermSs05-Italic.ttf
             iosevka/dist/IosevkaTermSs05/TTF/IosevkaTermSs05-Oblique.ttf
-            FontPatcher/IosevkaTermSS05NFM-Regular.ttf
+            IosevkaTermSS05NerdFontMono-Regular.ttf
+            IosevkaTermSS05NerdFontMono-Italic.ttf
