@@ -48,8 +48,9 @@ jobs:
           npm install
           npm run build -- ttf::${{ matrix.fontName }}
 
-      - name: Patcher Iosevka
-        run: FontPatcher/font-patcher --quiet --adjust-line-height --complete --careful -s iosevka/dist/IosevkaTermSs05/TTF/IosevkaTermSs05-Regular.ttf
+      - name: Patch Iosevka
+        run: font-patcher --quiet --adjust-line-height --complete --careful -s iosevka/dist/IosevkaTermSs05/TTF/IosevkaTermSs05-Regular.ttf
+
       - name: Set tag name env
         run: |
           # TAG_NAME=${{ github.ref }}
