@@ -44,10 +44,11 @@ jobs:
         id: create_release
         uses: softprops/action-gh-release@v2
         with:
+          path: iosevka
           tag_name: Nightly_Build
           # name: v${{ env.VERSION }}
           draft: false
           prerelease: false
           files: |
-            ./dist/IosevkaCustomSs05/TTF/IosevkaCustomSs05-Regular.ttf
-            ./dist/IosevkaCustomSs05/TTF/IosevkaCustomSs05-Italic.ttf
+            dist/IosevkaCustomSs05/TTF/IosevkaCustomSs05-Regular.ttf
+            dist/IosevkaCustomSs05/TTF/IosevkaCustomSs05-Italic.ttf
