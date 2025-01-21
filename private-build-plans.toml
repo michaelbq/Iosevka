@@ -1,0 +1,30 @@
+[buildPlans.IosevkaCustomSs05]
+family = "IosevkaCustomSS05"
+spacing = "term"
+serifs = "sans"
+noCvSs = true
+exportGlyphNames = false
+
+  [buildPlans.IosevkaCustomSs05.variants]
+  inherits = "ss05"
+
+    [buildPlans.IosevkaCustomSs05.variants.design]
+    a = "double-storey-serifless"
+    l = "zshaped"
+    r = "corner-hooked-top-serifed"
+    t = "flat-hook"
+    ampersand = "closed"
+    at = "fourfold"
+
+  [buildPlans.IosevkaCustomSs05.ligations]
+  inherits = "dlig"
+
+[buildPlans.IosevkaCustomSs05.weights.Regular]
+shape = 400
+menu = 400
+css = 400
+
+[buildPlans.IosevkaCustomSs05.widths.Normal]
+shape = 500
+menu = 5
+css = "normal"
