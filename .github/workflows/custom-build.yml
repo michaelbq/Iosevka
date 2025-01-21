@@ -33,6 +33,14 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends ttfautohint
 
+      - name: Install deps for nerd font
+        run: sudo apt update && sudo apt install -y fontforge python3-fontforge python3-fonttools p7zip jq
+
+      - name: Download Font Patcher
+        run: |
+          wget -q https://github.com/ryanoasis/nerd-fonts/raw/refs/heads/master/FontPatcher.zip
+          unzip FontPatcher.zip
+
       - name: Build Font ${{ matrix.fontName }}
         shell: bash
         working-directory: iosevka
@@ -40,6 +48,8 @@ jobs:
           npm install
           npm run build -- ttf::${{ matrix.fontName }}
 
+      - name: Patcher Iosevka
+        run: FontPatcher/font-patcher --quiet --adjust-line-height --complete --careful -s iosevka/dist/IosevkaTermSs05/TTF/IosevkaTermSs05-Regular.ttf
       - name: Set tag name env
         run: |
           # TAG_NAME=${{ github.ref }}
@@ -57,3 +67,4 @@ jobs:
             iosevka/dist/IosevkaTermSs05/TTF/IosevkaTermSs05-Regular.ttf
             iosevka/dist/IosevkaTermSs05/TTF/IosevkaTermSs05-Italic.ttf
             iosevka/dist/IosevkaTermSs05/TTF/IosevkaTermSs05-Oblique.ttf
+            FontPatcher/IosevkaTermSS05NFM-Regular.ttf
