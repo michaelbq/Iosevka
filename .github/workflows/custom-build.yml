@@ -65,7 +65,12 @@ jobs:
 
       - name: Generate artifact info
         run: |
-          echo `python width.py -c IosevkaTermSS05NerdFontMono-Regular.ttf` >> $GITHUB_STEP_SUMMARY
+          # echo `python width.py -c IosevkaTermSS05NerdFontMono-Regular.ttf` >> $GITHUB_STEP_SUMMARY
+          echo 'fontinfo<<EOF' >> $GITHUB_ENV
+          python width.py -c IosevkaTermSS05NerdFontMono-Regular.ttf >> $GITHUB_ENV
+          echo 'EOF' >> $GITHUB_ENV
+          
+          echo ${{ env.fontinfo }}
           
       - name: Publish Release
         id: publish_release
@@ -74,6 +79,8 @@ jobs:
           tag_name: ${{ env.NOW }}
           draft: false
           prerelease: false
+          body: |
+            ${{ env.fontinfo }}
           files: |
             iosevka/dist/IosevkaTermSs05/TTF/IosevkaTermSs05-Regular.ttf
             iosevka/dist/IosevkaTermSs05/TTF/IosevkaTermSs05-Italic.ttf
