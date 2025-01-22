@@ -57,7 +57,7 @@ jobs:
         run: |
           # TAG_NAME=${{ github.ref }}
           # echo "TAG_NAME=${TAG_NAME#refs/tags/}" >> $GITHUB_ENV
-          echo "NOW=v$(date +'%Y%m%d.%H%M%S')" >> $GITHUB_ENV
+          echo "NOW=v$(TZ='Asia/Shanghai' date +'%Y%m%d.%H%M%S')" >> $GITHUB_ENV
 
       - name: Download width.py
         run: |
@@ -65,7 +65,7 @@ jobs:
 
       - name: Generate artifact info
         run: |
-          echo `./width.py -c IosevkaTermSS05NerdFontMono-Regular.ttf` >> $GITHUB_STEP_SUMMARY
+          echo `python width.py -c IosevkaTermSS05NerdFontMono-Regular.ttf` >> $GITHUB_STEP_SUMMARY
           
       - name: Publish Release
         id: publish_release
