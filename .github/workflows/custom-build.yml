@@ -68,8 +68,9 @@ jobs:
           # echo `python width.py -c IosevkaTermSS05NerdFontMono-Regular.ttf` >> $GITHUB_STEP_SUMMARY
           echo 'fontinfo<<EOF' >> $GITHUB_ENV
           cd iosevka && git log -1 --oneline >> $GITHUB_ENV
-          cd .. 
-          echo "\nIosevkaTermSS05NerdFontMono-Regular.ttf:" >> $GITHUB_ENV
+          cd ..
+          echo "" >> $GITHUB_ENV
+          echo "IosevkaTermSS05NerdFontMono-Regular.ttf:" >> $GITHUB_ENV
           python width.py -c IosevkaTermSS05NerdFontMono-Regular.ttf >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
           
