@@ -99,11 +99,11 @@ jobs:
 
           # Print font info.
           echo "" >> $GITHUB_ENV
-          echo "IosevkaTermSS05NerdFontMono-Regular.ttf:" >> $GITHUB_ENV
+          echo "* IosevkaTermSS05NerdFontMono-Regular.ttf:" >> $GITHUB_ENV
           python width.py -c IosevkaTermSS05NerdFontMono-Regular.ttf >> $GITHUB_ENV
 
           echo "" >> $GITHUB_ENV
-          echo "IosevkaTermSS05NFM+LXGWWenKaiMonoLite-Regular.ttf:" >> $GITHUB_ENV
+          echo "* IosevkaTermSS05NFM+LXGWWenKaiMonoLite-Regular.ttf:" >> $GITHUB_ENV
           python width.py -c IosevkaTermSS05NFM+LXGWWenKaiMonoLite-Regular.ttf >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
 
