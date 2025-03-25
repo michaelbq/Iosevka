@@ -53,6 +53,23 @@ jobs:
           ./font-patcher --quiet --adjust-line-height --complete --careful -s iosevka/dist/IosevkaTermSs05/TTF/IosevkaTermSs05-Regular.ttf
           ./font-patcher --quiet --adjust-line-height --complete --careful -s iosevka/dist/IosevkaTermSs05/TTF/IosevkaTermSs05-Italic.ttf
 
+      - name: Download LXGWWenKaiMonoLite
+        run: |
+          wget -q https://github.com/lxgw/LxgwWenKai-Lite/releases/download/v1.510/LXGWWenKaiMonoLite-Regular.ttf
+
+      - name: Download Warcarft-Font-Merger
+        run: |
+          wget -q https://github.com/nowar-fonts/Warcraft-Font-Merger/releases/download/v1.1.0/WarFontMerger-XS-1.1.0-linux-amd64.tar.xz
+          tar -xvf WarFontMerger-XS-1.1.0-linux-amd64.tar.xz
+
+      - name: Merge font
+        run: |
+          otfccdump IosevkaTermSS05NerdFontMono-Regular.ttf -o base.otd
+          otfccdump LXGWWenKaiMonoLite-Regular.ttf -o cjk.otd
+          merge-otd base.otd cjk.otd
+          otfccbuild base.otd -O2 -o IosevkaTermSS05NFM+LXGWWenKaiMonoLite-Regular.ttf
+          rm *.otd
+
       - name: Set tag name env
         run: |
           # TAG_NAME=${{ github.ref }}
@@ -92,3 +109,4 @@ jobs:
             iosevka/dist/IosevkaTermSs05/TTF/IosevkaTermSs05-Oblique.ttf
             IosevkaTermSS05NerdFontMono-Regular.ttf
             IosevkaTermSS05NerdFontMono-Italic.ttf
+            IosevkaTermSS05NFM+LXGWWenKaiMonoLite-Regular.ttf
