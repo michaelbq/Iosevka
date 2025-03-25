@@ -82,8 +82,11 @@ jobs:
 
       - name: Generate artifact info
         run: |
+          echo 'fontinfo<<EOF' >> $GITHUB_ENV
           cd iosevka && git log -1 --oneline >> $GITHUB_ENV
           cd ..
+
+          # Fix Iosevka font agvCharWidth.
           python width.py -f 520 IosevkaTermSS05NerdFontMono-Regular.ttf -l -200 -n 30
 
           # Fix merged font.
@@ -93,7 +96,6 @@ jobs:
           mv IosevkaTermSS05NFM+LXGWWenKaiMonoLite-Regular-w1040-w520.ttf IosevkaTermSS05NFM+LXGWWenKaiMonoLite-Regular.ttf
 
           # Print font info.
-          echo 'fontinfo<<EOF' >> $GITHUB_ENV
           echo "" >> $GITHUB_ENV
           echo "IosevkaTermSS05NerdFontMono-Regular.ttf:" >> $GITHUB_ENV
           python width.py -c IosevkaTermSS05NerdFontMono-Regular.ttf >> $GITHUB_ENV
