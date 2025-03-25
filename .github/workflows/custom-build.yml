@@ -80,28 +80,33 @@ jobs:
         run: |
           wget -q https://github.com/georgealbert/MyNerdFonts/raw/refs/heads/main/width.py
 
-      - name: Generate artifact info
+      - name: Fix Iosevka and merged font
         run: |
-          echo 'fontinfo<<EOF' >> $GITHUB_ENV
-          cd iosevka && git log -1 --oneline >> $GITHUB_ENV
-          cd ..
-
           # Fix Iosevka font agvCharWidth.
           python width.py -f 520 IosevkaTermSS05NerdFontMono-Regular.ttf -l -200 -n 30
 
           # Fix merged font.
           python width.py -m IosevkaTermSS05NFM+LXGWWenKaiMonoLite-Regular.ttf -o 1000 -t 1040
           python width.py -m IosevkaTermSS05NFM+LXGWWenKaiMonoLite-Regular-w1040.ttf -o 500 -t 520
-          python width.py -f 520 IosevkaTermSS05NFM+LXGWWenKaiMonoLite-Regular.ttf -l -200 -n 30 -a 1040
           mv IosevkaTermSS05NFM+LXGWWenKaiMonoLite-Regular-w1040-w520.ttf IosevkaTermSS05NFM+LXGWWenKaiMonoLite-Regular.ttf
+          python width.py -f 520 IosevkaTermSS05NFM+LXGWWenKaiMonoLite-Regular.ttf -l -200 -n 30 -a 1040
+
+      - name: Generate artifact info
+        run: |
+          echo 'fontinfo<<EOF' >> $GITHUB_ENV
+          cd iosevka && git log -1 --oneline >> $GITHUB_ENV
+          cd ..
 
           # Print font info.
           echo "" >> $GITHUB_ENV
           echo "IosevkaTermSS05NerdFontMono-Regular.ttf:" >> $GITHUB_ENV
           python width.py -c IosevkaTermSS05NerdFontMono-Regular.ttf >> $GITHUB_ENV
+
+          echo "" >> $GITHUB_ENV
           echo "IosevkaTermSS05NFM+LXGWWenKaiMonoLite-Regular.ttf:" >> $GITHUB_ENV
           python width.py -c IosevkaTermSS05NFM+LXGWWenKaiMonoLite-Regular.ttf >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
+
           echo ${{ env.fontinfo }}
           
       - name: Publish Release
