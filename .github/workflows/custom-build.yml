@@ -55,7 +55,7 @@ jobs:
 
       - name: Download LXGWWenKaiMonoLite
         run: |
-          wget -q https://github.com/lxgw/LxgwWenKai-Lite/releases/download/v1.510/LXGWWenKaiMonoLite-Regular.ttf
+          wget -q https://github.com/lxgw/LxgwWenKai-Lite/releases/download/v1.511/LXGWWenKaiMonoLite-Regular.ttf
 
       - name: Download Warcarft-Font-Merger
         run: |
