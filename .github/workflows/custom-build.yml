@@ -7,8 +7,9 @@ on:
   workflow_dispatch: # 允许手动触发该工作流
 
 env:
-  FUSION_NAME: IosevkaTermSS05 Nerd Font Mono + LXGW WenKai Mono Lite FF
+  FUSION_NAME: IosevkaTermSS05 Nerd Font Mono + LXGW WenKai Mono Lite
   FUSION_ID: IosevkaTermSS05NFM+LXGWWenKaiMonoLiteFF
+  FILE_MERGED_WFM: IosevkaTermSS05NFM+LXGWWenKaiMonoLite
 
 jobs:
   build:
@@ -83,8 +84,8 @@ jobs:
         run: |
           for STYLE in "Regular"; do
             fontforge "fuse_fonts.ff" \
-              "LXGWWenKaiMonoLite-Regular.ttf" \
-              "IosevkaTermSS05NerdFontMono-Regular.ttf" \
+              "LXGWWenKaiMonoLite-${STYLE}.ttf" \
+              "IosevkaTermSS05NerdFontMono-${STYLE}.ttf" \
               "$FUSION_ID-$STYLE" \
               "$FUSION_NAME" \
               "$FUSION_NAME $STYLE" \
@@ -104,15 +105,17 @@ jobs:
           python width.py -f 520 IosevkaTermSS05NerdFontMono-Regular.ttf -l -200 -n 30
 
           # Fix merged font.
-          python width.py -m IosevkaTermSS05NFM+LXGWWenKaiMonoLite-Regular.ttf -o 1000 -t 1040
-          python width.py -m IosevkaTermSS05NFM+LXGWWenKaiMonoLite-Regular-w1040.ttf -o 500 -t 520
-          mv IosevkaTermSS05NFM+LXGWWenKaiMonoLite-Regular-w1040-w520.ttf IosevkaTermSS05NFM+LXGWWenKaiMonoLite-Regular.ttf
-          python width.py -f 520 IosevkaTermSS05NFM+LXGWWenKaiMonoLite-Regular.ttf -l -200 -n 30 -a 1040
+          python width.py -m ${FILE_MERGED_WFM}-Regular.ttf -o 1000 -t 1040
+          python width.py -m ${FILE_MERGED_WFM}-Regular-w1040.ttf -o 500 -t 520
+          mv ${FILE_MERGED_WFM}-Regular-w1040-w520.ttf ${FILE_MERGED_WFM}-Regular.ttf
+          python width.py -f 520 ${FILE_MERGED_WFM}-Regular.ttf -l -200 -n 30 -a 1040
 
-          python width.py -m ${FUSION_ID}-Regular.ttf -o 1000 -t 1040
-          python width.py -m ${FUSION_ID}-Regular-w1040.ttf -o 500 -t 520
-          mv ${FUSION_ID}-Regular-w1040-w520.ttf ${FUSION_ID}-Regular.ttf
-          python width.py -f 520 ${FUSION_ID}-Regular.ttf -l -200 -n 30 -a 1040
+          for STYLE in "Regular"; do
+            python width.py -m ${FUSION_ID}-${STYLE}.ttf -o 1000 -t 1040
+            python width.py -m ${FUSION_ID}-${STYLE}-w1040.ttf -o 500 -t 520
+            mv ${FUSION_ID}-${STYLE}-w1040-w520.ttf ${FUSION_ID}-${STYLE}.ttf
+            python width.py -f 520 ${FUSION_ID}-${STYLE}.ttf -l -200 -n 30 -a 1040
+          done
 
       - name: Generate artifact info
         run: |
@@ -126,12 +129,15 @@ jobs:
           python width.py -c IosevkaTermSS05NerdFontMono-Regular.ttf >> $GITHUB_ENV
 
           echo "" >> $GITHUB_ENV
-          echo "* IosevkaTermSS05NFM+LXGWWenKaiMonoLite-Regular.ttf:" >> $GITHUB_ENV
-          python width.py -c IosevkaTermSS05NFM+LXGWWenKaiMonoLite-Regular.ttf >> $GITHUB_ENV
+          echo "* ${FILE_MERGED_WFM}-Regular.ttf:" >> $GITHUB_ENV
+          python width.py -c ${FILE_MERGED_WFM}-Regular.ttf >> $GITHUB_ENV
 
-          echo "" >> $GITHUB_ENV
-          echo "* ${FUSION_ID}-Regular.ttf:" >> $GITHUB_ENV
-          python width.py -c ${FUSION_ID}-Regular.ttf >> $GITHUB_ENV
+          for STYLE in "Regular"; do
+            echo "" >> $GITHUB_ENV
+            echo "* ${FUSION_ID}-${STYLE}.ttf:" >> $GITHUB_ENV
+            python width.py -c ${FUSION_ID}-${STYLE}.ttf >> $GITHUB_ENV
+          done
+
           echo 'EOF' >> $GITHUB_ENV
 
           echo ${{ env.fontinfo }}
@@ -151,5 +157,5 @@ jobs:
             iosevka/dist/IosevkaTermSs05/TTF/IosevkaTermSs05-Oblique.ttf
             IosevkaTermSS05NerdFontMono-Regular.ttf
             IosevkaTermSS05NerdFontMono-Italic.ttf
-            IosevkaTermSS05NFM+LXGWWenKaiMonoLite-Regular.ttf
+            ${FILE_MERGED_WFM}-Regular.ttf
             ${{ env.FUSION_ID }}-Regular.ttf
