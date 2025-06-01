@@ -6,6 +6,10 @@ on:
       - main
   workflow_dispatch: # 允许手动触发该工作流
 
+env:
+  FUSION_NAME: IosevkaTermSS05 Nerd Font Mono + LXGW WenKai Mono Lite FF
+  FUSION_ID: IosevkaTermSS05NerdFontMono+LXGWWenKaiMonoLite-FF
+
 jobs:
   build:
     name: Build ${{ matrix.fontName }} font
@@ -62,13 +66,26 @@ jobs:
           wget -q https://github.com/nowar-fonts/Warcraft-Font-Merger/releases/download/v1.1.0/WarFontMerger-XS-1.1.0-linux-amd64.tar.xz
           tar -xvf WarFontMerger-XS-1.1.0-linux-amd64.tar.xz
 
-      - name: Merge font
+      - name: Merge font by WarFontMerger
         run: |
           字体合并补全工具-压缩字库-1.1.0-linux-amd64/otfccdump IosevkaTermSS05NerdFontMono-Regular.ttf -o base.otd
           字体合并补全工具-压缩字库-1.1.0-linux-amd64/otfccdump LXGWWenKaiMonoLite-Regular.ttf -o cjk.otd
           字体合并补全工具-压缩字库-1.1.0-linux-amd64/merge-otd base.otd cjk.otd
           字体合并补全工具-压缩字库-1.1.0-linux-amd64/otfccbuild base.otd -O2 -o IosevkaTermSS05NFM+LXGWWenKaiMonoLite-Regular.ttf
           rm *.otd
+
+      - name: Merge font by FontForge
+        run: |
+          for STYLE in "Regular"; do
+            fontforge "fuse_fonts.ff" \
+              "LXGWWenKaiMonoLite-Regular.ttf" \
+              "IosevkaTermSS05NerdFontMono-Regular.ttf" \
+              "$FUSION_ID-$STYLE" \
+              "$FUSION_NAME" \
+              "$FUSION_NAME $STYLE" \
+              "$STYLE" \
+              "$FUSION_ID-${STYLE}.ttf"
+          done
 
       - name: Set tag name env
         run: |
@@ -105,6 +122,7 @@ jobs:
           echo "" >> $GITHUB_ENV
           echo "* IosevkaTermSS05NFM+LXGWWenKaiMonoLite-Regular.ttf:" >> $GITHUB_ENV
           python width.py -c IosevkaTermSS05NFM+LXGWWenKaiMonoLite-Regular.ttf >> $GITHUB_ENV
+          python width.py -c $FUSION_ID-${STYLE}.ttf >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
 
           echo ${{ env.fontinfo }}
@@ -125,3 +143,4 @@ jobs:
             IosevkaTermSS05NerdFontMono-Regular.ttf
             IosevkaTermSS05NerdFontMono-Italic.ttf
             IosevkaTermSS05NFM+LXGWWenKaiMonoLite-Regular.ttf
+            $FUSION_ID-${STYLE}.ttf
