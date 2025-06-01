@@ -109,6 +109,11 @@ jobs:
           mv IosevkaTermSS05NFM+LXGWWenKaiMonoLite-Regular-w1040-w520.ttf IosevkaTermSS05NFM+LXGWWenKaiMonoLite-Regular.ttf
           python width.py -f 520 IosevkaTermSS05NFM+LXGWWenKaiMonoLite-Regular.ttf -l -200 -n 30 -a 1040
 
+          python width.py -m ${FUSION_ID}-Regular.ttf -o 1000 -t 1040
+          python width.py -m ${FUSION_ID}-Regular-w1040.ttf -o 500 -t 520
+          mv ${FUSION_ID}-Regular-w1040-w520.ttf ${FUSION_ID}-Regular.ttf
+          python width.py -f 520 ${FUSION_ID}-Regular.ttf -l -200 -n 30 -a 1040
+
       - name: Generate artifact info
         run: |
           echo 'fontinfo<<EOF' >> $GITHUB_ENV
