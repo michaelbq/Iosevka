@@ -8,7 +8,7 @@ on:
 
 env:
   FUSION_NAME: IosevkaTermSS05 Nerd Font Mono + LXGW WenKai Mono Lite FF
-  FUSION_ID: IosevkaTermSS05NerdFontMono+LXGWWenKaiMonoLite-FF
+  FUSION_ID: IosevkaTermSS05NFM+LXGWWenKaiMonoLiteFF
 
 jobs:
   build:
@@ -123,6 +123,9 @@ jobs:
           echo "" >> $GITHUB_ENV
           echo "* IosevkaTermSS05NFM+LXGWWenKaiMonoLite-Regular.ttf:" >> $GITHUB_ENV
           python width.py -c IosevkaTermSS05NFM+LXGWWenKaiMonoLite-Regular.ttf >> $GITHUB_ENV
+
+          echo "" >> $GITHUB_ENV
+          echo "* ${FUSION_ID}-Regular.ttf:" >> $GITHUB_ENV
           python width.py -c ${FUSION_ID}-Regular.ttf >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
 
@@ -144,4 +147,4 @@ jobs:
             IosevkaTermSS05NerdFontMono-Regular.ttf
             IosevkaTermSS05NerdFontMono-Italic.ttf
             IosevkaTermSS05NFM+LXGWWenKaiMonoLite-Regular.ttf
-            ${FUSION_ID}-Regular.ttf
+            ${{ env.FUSION_ID }}-Regular.ttf
