@@ -74,6 +74,11 @@ jobs:
           字体合并补全工具-压缩字库-1.1.0-linux-amd64/otfccbuild base.otd -O2 -o IosevkaTermSS05NFM+LXGWWenKaiMonoLite-Regular.ttf
           rm *.otd
 
+      - name: Download width.py & fuse_fonts.ff
+        run: |
+          wget -q https://github.com/georgealbert/MyNerdFonts/raw/refs/heads/main/width.py
+          wget -q https://github.com/georgealbert/MyNerdFonts/raw/refs/heads/main/fuse_fonts.ff
+
       - name: Merge font by FontForge
         run: |
           for STYLE in "Regular"; do
@@ -92,11 +97,6 @@ jobs:
           # TAG_NAME=${{ github.ref }}
           # echo "TAG_NAME=${TAG_NAME#refs/tags/}" >> $GITHUB_ENV
           echo "NOW=v$(TZ='Asia/Shanghai' date +'%Y%m%d.%H%M%S')" >> $GITHUB_ENV
-
-      - name: Download width.py & fuse_fonts.ff
-        run: |
-          wget -q https://github.com/georgealbert/MyNerdFonts/raw/refs/heads/main/width.py
-          wget -q https://github.com/georgealbert/MyNerdFonts/raw/refs/heads/main/fuse_fonts.ff
 
       - name: Fix Iosevka and merged font
         run: |
