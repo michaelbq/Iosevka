@@ -93,9 +93,10 @@ jobs:
           # echo "TAG_NAME=${TAG_NAME#refs/tags/}" >> $GITHUB_ENV
           echo "NOW=v$(TZ='Asia/Shanghai' date +'%Y%m%d.%H%M%S')" >> $GITHUB_ENV
 
-      - name: Download width.py
+      - name: Download width.py & fuse_fonts.ff
         run: |
           wget -q https://github.com/georgealbert/MyNerdFonts/raw/refs/heads/main/width.py
+          wget -q https://github.com/georgealbert/MyNerdFonts/raw/refs/heads/main/fuse_fonts.ff
 
       - name: Fix Iosevka and merged font
         run: |
