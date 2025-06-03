@@ -11,7 +11,7 @@ env:
   FUSION_NAME: IosevkaTermSS05 Nerd Font Mono + LXGW WenKai Mono Lite
   FUSION_ID: IosevkaTermSS05NFM+LXGWWenKaiMonoLiteFF
   FUSION_DEVELOPER: Albert
-  FUSION_DESCRIPTION: The free and open-source font fused with Iosevka & LXGW WenKai
+  FUSION_DESCRIPTION: "The free and open-source font fused with Iosevka and LXGW WenKai"
   FUSION_COPYRIGHT: Copyright 2025 Albert (${{ github.server_url }}/${{ github.repository }})
   FUSION_LICENSE: "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://openfontlicense.org"
   IOSEVKA_COPYRIGHT: Copyright 2015-2025, Renzhi Li (aka. Belleve Invis, belleve@typeof.net).
@@ -131,7 +131,7 @@ jobs:
               --version "$NOW" \
               --copyright "$(echo -e "$IOSEVKA_COPYRIGHT\n$LXGW_COPYRIGHT\n$FUSION_COPYRIGHT")" \
               --license "$FUSION_LICENSE" \
-              --urlvendor "https://github.com/georgealbert/iosevka" \
+              --urlvendor "https://github.com/georgealbert/Iosevka" \
               --urldesigner "https://www.albertzhou.net" \
               --urllicense "https://openfontlicense.org"
           done
