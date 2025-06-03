@@ -79,7 +79,7 @@ jobs:
           # 字体合并补全工具-压缩字库-1.1.0-linux-amd64/otfccdump LXGWWenKaiMonoLite-Regular.ttf -o cjk.otd
           # 字体合并补全工具-压缩字库-1.1.0-linux-amd64/merge-otd base.otd cjk.otd
           # 字体合并补全工具-压缩字库-1.1.0-linux-amd64/otfccbuild base.otd -O2 -o IosevkaTermSS05NFM+LXGWWenKaiMonoLite-Regular.ttf
-          rm *.otd
+          # rm *.otd
 
       - name: Download width.py & fuse_fonts.ff
         run: |
