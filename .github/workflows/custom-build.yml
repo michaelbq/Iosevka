@@ -133,6 +133,7 @@ jobs:
               --urlvendor "https://github.com/georgealbert/Iosevka" \
               --urldesigner "https://www.albertzhou.net" \
               --urllicense "https://openfontlicense.org"
+            mv "${FUSION_ID}-${STYLE}.ttf.fix" "${FUSION_ID}-${STYLE}.ttf"
           done
 
       - name: Generate artifact info
