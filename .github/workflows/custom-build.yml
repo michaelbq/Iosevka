@@ -175,5 +175,4 @@ jobs:
             iosevka/dist/IosevkaTermSs05/TTF/IosevkaTermSs05-Italic.ttf
             IosevkaTermSS05NerdFontMono-Regular.ttf
             IosevkaTermSS05NerdFontMono-Italic.ttf
-            ${{ env.FILE_MERGED_WFM }}-Regular.ttf
             ${{ env.FUSION_ID }}-Regular.ttf
