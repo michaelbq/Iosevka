@@ -9,7 +9,7 @@ on:
 env:
   FILE_MERGED_WFM: IosevkaTermSS05NFM+LXGWWenKaiMonoLite
   FUSION_NAME: IosevkaTermSS05 Nerd Font Mono + LXGW WenKai Mono Lite
-  FUSION_ID: IosevkaTermSS05NFM+LXGWWenKaiMonoLiteFF
+  FUSION_ID: IosevkaTermSS05NFM+LXGWWenKaiMonoLite
   FUSION_DEVELOPER: Albert
   FUSION_DESCRIPTION: "The free and open-source font fused with Iosevka and LXGW WenKai"
   FUSION_COPYRIGHT: Copyright 2025 Albert (${{ github.server_url }}/${{ github.repository }})
@@ -148,7 +148,7 @@ jobs:
             echo "* IosevkaTermSS05NerdFontMono-${STYLE}.ttf:" >> $GITHUB_ENV
             python width.py -c IosevkaTermSS05NerdFontMono-${STYLE}.ttf >> $GITHUB_ENV
 
-            echo "" >> $GITHUB_ENV
+            # echo "" >> $GITHUB_ENV
             # echo "* ${FILE_MERGED_WFM}-${STYLE}.ttf:" >> $GITHUB_ENV
             # python width.py -c ${FILE_MERGED_WFM}-${STYLE}.ttf >> $GITHUB_ENV
 
