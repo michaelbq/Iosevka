@@ -171,10 +171,13 @@ jobs:
           body: >
             针对Iosevka字体过于瘦高进行了优化下面的优化：
 
-            + Iosevka字体参考FiraCode风格，调整了i、r、l、t和1、4、0等数字的样式。
-            + 英文字体宽度为520，中文为1040。
-            + 英文字体编译时enable TXTR特性，就是Monaspace字体的text healing。
-            + 合并字体中的中文字体为霞鹜文楷Lite等宽(LXGW WenKai Mono Lite)
+            1. Iosevka字体参考FiraCode风格，调整了i、r、l、t和1、4、0等数字的样式。
+
+            2. 英文字体宽度为520，中文为1040。
+
+            3. 英文字体编译时enable TXTR特性，就是Monaspace字体的text healing。
+
+            4. 合并字体中的中文字体为霞鹜文楷Lite等宽(LXGW WenKai Mono Lite)。
 
             ${{ env.fontinfo }}
           files: |
