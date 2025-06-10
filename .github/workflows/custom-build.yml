@@ -176,9 +176,10 @@ jobs:
 
             2. 英文字体宽度为520，中文为1040。
 
-            3. 英文字体编译时使能`TXTR`特性，就是Monaspace字体的text healing。
+            3. 英文字体编译时使能TXTR特性，就是Monaspace字体的text healing。
 
-            4. 合并字体(${{ env.FUSION_ID }}-Regular.ttf)中的中文字体为[霞鹜文楷Lite等宽](${{ env.LXGW_WENKAI_LITE }})。
+            4. 合并字体(${{ env.FUSION_ID }}-Regular.ttf)中的中文字体为[霞鹜文楷Lite等宽](${{ env.LXGW_WENKAI_LITE }})
+
 
             ${{ env.fontinfo }}
           files: |
