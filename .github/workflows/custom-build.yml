@@ -165,7 +165,7 @@ jobs:
           
       - name: Publish Release
         id: publish_release
-        uses: softprops/action-gh-release@2
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ env.NOW }}
           draft: false
@@ -185,6 +185,11 @@ jobs:
 
 
             ${{ env.release_body }}
+
+
+            Built with
+            [Github Workflow #${{ github.run_number }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+
           files: |
             iosevka/dist/IosevkaTermSs05/TTF/IosevkaTermSs05-Regular.ttf
             iosevka/dist/IosevkaTermSs05/TTF/IosevkaTermSs05-Italic.ttf
