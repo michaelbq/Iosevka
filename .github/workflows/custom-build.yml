@@ -148,7 +148,9 @@ jobs:
             echo "" >> $GITHUB_ENV
             echo "# Font Info:" >> $GITHUB_ENV
             echo "* IosevkaTermSS05NerdFontMono-${STYLE}.ttf:" >> $GITHUB_ENV
+            echo "```" >> $GITHUB_ENV
             python width.py -c IosevkaTermSS05NerdFontMono-${STYLE}.ttf >> $GITHUB_ENV
+            echo "```" >> $GITHUB_ENV
 
             # echo "" >> $GITHUB_ENV
             # echo "* ${FILE_MERGED_WFM}-${STYLE}.ttf:" >> $GITHUB_ENV
@@ -156,7 +158,9 @@ jobs:
 
             echo "" >> $GITHUB_ENV
             echo "* ${FUSION_ID}-${STYLE}.ttf:" >> $GITHUB_ENV
+            echo "```" >> $GITHUB_ENV
             python width.py -c ${FUSION_ID}-${STYLE}.ttf >> $GITHUB_ENV
+            echo "```" >> $GITHUB_ENV
           done
 
           echo 'EOF' >> $GITHUB_ENV
@@ -181,7 +185,7 @@ jobs:
 
             4. 中文字体为[霞鹜文楷Lite等宽](${{ env.LXGW_WENKAI_LITE }})。
 
-            5. 中英文合并字体是(${{ env.FUSION_ID }}-Regular.ttf)。
+            5. 中英文合并字体是[${{ env.FUSION_ID }}-Regular.ttf](${{ github.server_url }}/${{ github.repository }}/releases/download/${{ NOW }}/${{ env.FUSION_ID }}-Regular.ttf)。
 
 
             ${{ env.release_body }}
